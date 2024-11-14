@@ -17,6 +17,7 @@
   <thead>
     <tr>
        <th scope="col">id</th>
+       <th scope="col">Imagem</th>
       <th scope="col">marca</th>
       <th scope="col">descrição</th>
       <th scope="col">preço</th>
@@ -28,6 +29,11 @@
   {% for produto in produtos%}
     <tr>
       <td>{{produto.id}}</td>
+      <td>
+        {% if produto.imagem %}
+        <img src="{{produto.imagem.url}}" alt="{{produto.nome}}" style="width: 100px; height: auto;">
+        {% endif %}
+      </td>
       <td>{{produto.marca}}</td>
       <td>{{produto.descricao}}</td>
       <td>{{produto.preco}}</td>

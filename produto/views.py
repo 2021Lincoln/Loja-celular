@@ -13,9 +13,15 @@ def salvar(request):
     vdescricao = request.POST.get("descricao")
     vpreco = request.POST.get("preco")
     vquantidade = request.POST.get("quantidade")
+    vimagem = request.FILES.get("imagem")
 
     if vmarca:
-        Produto.objects.create(marca=vmarca, descricao=vdescricao, preco=vpreco, quantidade=vquantidade)
+        Produto.objects.create(marca=vmarca,
+                               descricao=vdescricao,
+                               preco=vpreco,
+                               quantidade=vquantidade,
+                               imagem=vimagem
+                               )
     return redirect(fproduto)
 
 
@@ -34,10 +40,13 @@ def update(request, id):
     vdescricao = request.POST.get("descricao")
     vpreco = request.POST.get("preco")
     vquantidade = request.POST.get("quantidade")
+    vimagem = request.FILES.get("imagem")
     produto = Produto.objects.get(id=id)
     produto.marca = vmarca
     produto.descricao = vdescricao
     produto.preco = vpreco
     produto.quantidade = vquantidade
+    if vimagem:
+        produto.imagem = vimagem
     produto.save()
     return redirect(fproduto)
