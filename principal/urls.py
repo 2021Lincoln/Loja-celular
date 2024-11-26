@@ -16,13 +16,17 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import findex, fhistoria
+from .views import findex, fhistoria, fcelulares, fcapinhas, facessorios, flogin
 
 
 
 urlpatterns = [
     path('', findex), #chama direto pelo servidor
     path('fhistoria/', fhistoria, name='fhistoria'),
+    path('fcelulares/', fcelulares, name='fcelulares'),
+    path('fcapinhas/', fcapinhas, name='fcapinhas'),
+    path('facessorios/', facessorios, name='facessorios'),
+    path('flogin/', flogin, name='flogin'),
     path('findex/', findex, name='findex'), #Cria link de
 
 ]

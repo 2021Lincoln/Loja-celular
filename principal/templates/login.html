@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Login</title>
+    <!-- Link para o Bootstrap 4 ou 5 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Centralizando o formulário na tela */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div>
+        <h3 class="text-center mb-4">Entrar</h3>
+
+        <div class="form-group">
+            <label for="exampleDropdownFormEmail1">Endereço de email</label>
+            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@exemplo.com">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleDropdownFormPassword1">Senha</label>
+            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Senha">
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+            <label class="form-check-label" for="dropdownCheck">
+                Lembrar de mim
+            </label>
+        </div>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'fcadcliente' %}">
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+
+        <form class="form-inline my-2 my-lg-0" action="{% url 'fcadcliente' %}">
+        <button type="submit" class="btn btn-secondary" >Cadastre-se</button>
+        </form>
+
+        <div class="dropdown-divider"></div>
+        <a class="d-block text-center mt-2" href="#">Esqueceu a senha?</a>
+    </div>
+</div>
+
+<!-- Inclusão do JS e dependências do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

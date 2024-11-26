@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
+{% load static %}
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Nossa História</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
@@ -22,6 +24,67 @@
     </ul>
   </div>
 </nav>
+
+    <header>
+    <h1>Bem-vindo à Nossa Loja de Celulares</h1>
+    <p>Conectando você ao mundo da tecnologia desde 2000</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>A História da Nossa Loja</h2>
+        <p class="story-text">
+            Nossa loja de celulares foi fundada no ano 2000 com o objetivo de trazer as melhores soluções em tecnologia para nossos clientes. Começamos com uma pequena loja de rua, oferecendo apenas alguns modelos de celulares, mas nossa missão sempre foi clara: oferecer produtos de qualidade, um excelente atendimento e preços justos.
+        </p>
+        <p class="story-text">
+            Ao longo dos anos, acompanhamos o crescimento da tecnologia móvel, sempre atualizados com as últimas tendências e inovações do mercado. Nossa loja cresceu e se transformou, expandindo nosso portfólio para oferecer não apenas celulares, mas também acessórios, serviços de reparo e assistência técnica especializada.
+        </p>
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{% static 'img/img iphone 5c.jpg' %}" width="20%" height="20%" alt="Loja de Celulares"> alt="Primeiro Slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'img/img iphone 5c.jpg' %}" alt="Segundo Slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'img/images.jpg' %}" alt="Terceiro Slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div>
+
+    </section>
+
+    <section class="mission">
+        <h2>Nossa Missão</h2>
+        <p class="story-text">
+            Nossa missão é proporcionar a melhor experiência de compra para os nossos clientes, oferecendo produtos de alta qualidade e um atendimento personalizado. Buscamos ser uma referência no mercado de celulares, sempre alinhados às necessidades e expectativas de quem confia em nosso trabalho.
+        </p>
+    </section>
+
+    <section class="values">
+        <h2>Valores que nos Guiam</h2>
+        <ul class="story-text">
+            <li><strong>Qualidade:</strong> Trabalhamos apenas com marcas e produtos de excelência.</li>
+            <li><strong>Inovação:</strong> Estamos sempre em busca das últimas tecnologias para oferecer as melhores opções aos nossos clientes.</li>
+            <li><strong>Atendimento:</strong> Nossa equipe é treinada para oferecer o melhor atendimento, com respeito e dedicação.</li>
+            <li><strong>Compromisso:</strong> Garantimos a satisfação de nossos clientes, com produtos garantidos e serviços de alta qualidade.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Nossa Loja de Celulares. Todos os direitos reservados.</p>
+    </footer>
+</div>
 
 
     <!-- JavaScript (Opcional) -->
