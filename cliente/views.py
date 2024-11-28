@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Cliente
 from django.contrib.auth.hashers import make_password
+from django.contrib import messages
 # Create your views here.
 def fcliente(request):
     clientes = Cliente.objects.all()
@@ -39,3 +40,33 @@ def update_cliente(request, id):
     cliente.email = vemail
     cliente.save()
     return redirect(fcliente)
+
+def flogin(request):
+    return render(request, "login.html")
+
+
+def logar(request):
+    if request.method == 'POST':
+        # Correção do nome do campo para 'email' ao invés de 'username'
+        email = request.POST.get('email')
+        senha = request.POST.get('password')
+
+        try:
+            cliente = Cliente.objects.get(email=email)
+            if cliente.check_password(senha):
+                return redirect('telacli')  # Redireciona para a tela principal após login bem-sucedido
+            else:
+                # Mensagem de erro caso a senha esteja incorreta
+                messages.error(request, 'Senha inválida.')
+                return redirect('flogin')  # Redireciona para a página de login
+        except Cliente.DoesNotExist:
+            # Mensagem de erro caso o cliente com o email não seja encontrado
+            messages.error(request, 'Credenciais inválidas.')
+            return redirect('flogin')  # Redireciona para a página de login
+
+
+
+def telacli(request):
+    return render(request, "telacliente.html")
+
+

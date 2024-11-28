@@ -17,5 +17,4 @@ def fcapinhas(request):
 def facessorios(request):
     return render(request, "acessorios.html")
 
-def flogin(request):
-    return render(request, "login.html")
+

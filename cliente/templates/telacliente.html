@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Celulares</title>
+    <style>
+        /* Reset de estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        nav {
+            background-color: #444;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Seção de produtos */
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .produto {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .produto:hover {
+            transform: scale(1.05);
+        }
+
+        .produto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .produto h3 {
+            font-size: 1.4em;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .produto p {
+            font-size: 1em;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .produto .preco {
+            font-size: 1.5em;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .produto .botao {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .produto .botao:hover {
+            background-color: #555;
+        }
+
+        /* Seção do Carrinho */
+        .carrinho {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        .carrinho h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .carrinho ul {
+            list-style: none;
+        }
+
+        .carrinho ul li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .carrinho .total {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 15px;
+        }
+
+        .carrinho button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .carrinho button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .produto {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .produto {
+                width: 100%;
+            }
+
+            .produtos {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Loja de Celulares</h1>
+        <p>Encontre os melhores celulares com os melhores preços</p>
+    </header>
+
+    <nav>
+        <a href="#produtos">Produtos</a>
+        <a href="#carrinho">Carrinho</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <section id="produtos" class="produtos">
+        <!-- Produto 1 -->
+        <div class="produto">
+            <img src="iphone12.jpg" alt="iPhone 12">
+            <h3>iPhone 12</h3>
+            <p>O iPhone 12 é a combinação perfeita de desempenho e estilo.</p>
+            <p class="preco">R$ 5.999,90</p>
+            <button class="botao">Adicionar ao Carrinho</button>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="produto">
+            <img src="galaxyS21.jpg" alt="Samsung Galaxy S21">
+            <h3>Samsung Galaxy S21</h3>
+            <p>Desempenho impressionante com uma tela incrível.</p>
+            <p class="preco">R$ 4.499,90</p>
+            <button class="botao">Adicionar ao Carrinho</button>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="produto">
+            <img src="pixel6.jpg" alt="Google Pixel 6">
+            <h3>Google Pixel 6</h3>
+            <p>A câmera do Pixel 6 é impressionante para quem adora tirar fotos.</p>
+            <p class="preco">R$ 3.799,90</p>
+            <button class="botao">Adicionar ao Carrinho</button>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="produto">
+            <img src="motoG60.jpg" alt="Moto G60">
+            <h3>Moto G60</h3>
+            <p>O celular com excelente custo-benefício, ideal para o dia a dia.</p>
+            <p class="preco">R$ 1.999,90</p>
+            <button class="botao">Adicionar ao Carrinho</button>
+        </div>
+    </section>
+
+    <section id="carrinho" class="carrinho">
+        <h2>Carrinho de Compras</h2>
+        <ul>
+            <li>iPhone 12 - R$ 5.999,90</li>
+            <li>Samsung Galaxy S21 - R$ 4.499,90</li>
+        </ul>
+        <p class="total">Total: R$ 10.499,80</p>
+        <button>Finalizar Compra</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Loja de Celulares | Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>
