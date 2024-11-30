@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -117,7 +118,7 @@
     <div class="container">
         <!-- Produto 1 -->
         <div class="produto">
-            <img src="img/xiaomi m11.jpg" alt="Celular 1">
+            <img src="{% static 'img/xiaomi m11.jpg' %}" alt="Celular 1">
             <h3>Celular X1</h3>
             <p>Celular com câmeras incríveis e desempenho rápido.</p>
             <p class="preco">R$ 1.499,00</p>
