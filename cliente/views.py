@@ -47,7 +47,7 @@ def flogin(request):
 
 def logar(request):
     if request.method == 'POST':
-        # Correção do nome do campo para 'email' ao invés de 'username'
+
         email = request.POST.get('email')
         senha = request.POST.get('password')
 
