@@ -52,3 +52,8 @@ def update(request, id):
         produto.imagem = vimagem
     produto.save()
     return redirect(fproduto)
+
+
+def listaproduto(request):
+    capinhas = Produto.objects.all()
+    return render(request, "capinhas.html", {"capinhas": capinhas})

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Celulares</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Loja de Capinhas de Celular</title>
     <style>
         /* Resetando alguns estilos padrão */
         * {
@@ -15,7 +15,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            background-color: #f4f4f4;
             color: #333;
         }
 
@@ -27,7 +27,8 @@
         }
 
         h1 {
-            font-size: 2em;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
 
         .container {
@@ -111,58 +112,30 @@
 </head>
 <body>
     <header>
-        <h1>Loja de Celulares</h1>
-        <p>Encontre os melhores celulares com os melhores preços!</p>
+        <h1>Loja de Capinhas de Celular</h1>
+        <p>Encontre as capinhas perfeitas para o seu celular!</p>
     </header>
 
     <div class="container">
-        <!-- Produto 1 -->
-        <div class="produto">
-            <img src="{% static 'img/xiaomi m11.jpg' %}">
-            <h3>Xiaomi</h3>
-            <p>Celular com câmeras incríveis e desempenho rápido.</p>
-            <p class="preco">R$ 1.499,00</p>
-            <button class="botao">Comprar</button>
-        </div>
+    <div class="row">
+        {% for capinha in capinhas %}
+            <div class="col-md-3">
+                {% if capinha.imagem %}
+                    <img src="{{ capinha.imagem.url }}" alt="{{ capinha.nome }}" style="width: 100px; height: auto;">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">Celular</h5>
+                    <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+                </div>
+                <h3>{{ capinha.nome }}</h3>
+                <p>{{ capinha.descricao }}</p>
+                <p class="preco">R$ {{ capinha.preco }}</p>
+                <button class="botao">Comprar</button>
 
-        <!-- Produto 2 -->
-        <div class="produto">
-            <img src="{% static 'img/motorola edge 50.png' %}" >
-            <h3>motorola</h3>
-            <p>Smartphone com ótima autonomia de bateria e tela vibrante.</p>
-            <p class="preco">R$ 1.799,00</p>
-            <button class="botao">Comprar</button>
-        </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
-        <!-- Produto 3 -->
-        <div class="produto">
-            <img src="{% static 'img/samsung s23.jpg' %}" >
-            <h3>samsung</h3>
-            <p>Desempenho de alto nível com processador potente.</p>
-            <p class="preco">R$ 2.199,00</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 4 -->
-        <div class="produto">
-            <img src="{% static 'img/nokia 5.4.jpg' %}" >
-            <h3>Nokia</h3>
-            <p>Smartphone de última geração, perfeito para jogos.</p>
-            <p class="preco">R$ 2.599,00</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 5 -->
-        <div class="produto">
-            <img src="{% static 'img/img_iphone_5c.jpg' %}">
-            <h3>Iphone 5c</h3>
-            <p>Excelente custo-benefício com boas funcionalidades.</p>
-            <p class="preco">R$ 1.199,00</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 6 -->
-        <div class="produto">
-            <img src="{% static 'img/img_iphone_13.png' %}">
-            <h3>Iphone 13</h3>
-            <p>Celular resistente, ideal para o us
+</body>
+</html>
