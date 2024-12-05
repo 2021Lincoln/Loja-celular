@@ -13,7 +13,7 @@ def salvar(request):
     vdescricao = request.POST.get("descricao")
     vpreco = request.POST.get("preco")
     vquantidade = request.POST.get("quantidade")
-    vcategoria = request.Post.get("categoria")
+    vcategoria = request.POST.get("categoria")
     vimagem = request.FILES.get("imagem")
 
     if vmarca:
@@ -54,6 +54,32 @@ def update(request, id):
     return redirect(fproduto)
 
 
-def listaproduto(request):
-    capinhas = Produto.objects.all()
+def lista_capinha(request):
+    categoria = request.GET.get('categoria')
+    if categoria:
+        capinhas = Produto.objects.filter(categoria=categoria)
+    else:
+        capinhas = Produto.objects.all()
+
     return render(request, "capinhas.html", {"capinhas": capinhas})
+
+def lista_celular(request):
+    categoria = request.GET.get('categoria')
+    if categoria:
+        celulares = Produto.objects.filter(categoria=categoria)
+    else:
+        celulares = Produto.objects.all()
+
+    return render(request, "celulares.html", {"celulares": celulares})
+
+
+def lista_acessorios(request):
+    categoria = request.GET.get('categoria')
+    if categoria:
+        acessorios = Produto.objects.filter(categoria=categoria)
+    else:
+        acessorios = Produto.objects.all()
+
+    return render(request, "acessorios.html", {"acessorios": acessorios})
+
+

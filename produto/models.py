@@ -14,8 +14,12 @@ class Produto(models.Model):
 
     quantidade = models.IntegerField()
 
+    categoria = models.CharField(max_length=60, null=True, blank=True)
+
     imagem = models.ImageField(upload_to='imagens/', null=True, blank=True)
 
+
+
     def __str__(self):
-        return f"{self.marca} - {self.descricao} - {self.preco:.2f} - {self.quantidade}"
+        return f"{self.marca} - {self.descricao} - {self.preco:.2f} - {self.quantidade} - {self.categoria} "
 

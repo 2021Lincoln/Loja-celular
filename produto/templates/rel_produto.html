@@ -22,6 +22,7 @@
       <th scope="col">descrição</th>
       <th scope="col">preço</th>
       <th scope="col">quantidade</th>
+      <th scope="col">categoria</th>
       <th scope="col">Operação</th>
     </tr>
   </thead>
@@ -38,6 +39,7 @@
       <td>{{produto.descricao}}</td>
       <td>{{produto.preco}}</td>
       <td>{{produto.quantidade}}</td>
+      <td>{{produto.categoria}}</td>
       <td>
         <a href="{% url 'exibir' produto.id %}"><button type="button" class="btn btn-info">Editar</button></a>
         <a href="{% url 'excluir' produto.id %}"><button type="button" class="btn btn-info">Excluir</button></a>

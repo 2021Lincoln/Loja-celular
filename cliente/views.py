@@ -21,9 +21,21 @@ def salvar_cliente(request):
         Cliente.objects.create(nome=vnome, telefone=vtelefone, email=vemail, senha=senha_criptografada)
     return redirect(fcliente)
 
-def exibir_cliente(request, id):
-    cliente = Cliente.objects.get(id=id)
-    return render(request, 'update_cliente.html', {"cliente": cliente})
+def exibir_cliente(request, id=None):
+    if id is None:
+        # Usa o ID do cliente da sessão se não foi passado na URL
+        id = request.session.get('cliente_id')
+
+    if id is not None:
+        try:
+            cliente = Cliente.objects.get(id=id)
+            return render(request, 'update_cliente.html', {"cliente": cliente})
+        except Cliente.DoesNotExist:
+            messages.error(request, 'Cliente não encontrado.')
+            return redirect('findex')  # Redirecione para uma página de sua escolha
+    else:
+        messages.error(request, 'Você não está logado.')
+        return redirect('flogin')  # Redirecione para a página de login
 
 def excluir_cliente(request, id):
     cliente = Cliente.objects.get(id=id)
@@ -47,13 +59,14 @@ def flogin(request):
 
 def logar(request):
     if request.method == 'POST':
-
         email = request.POST.get('email')
         senha = request.POST.get('password')
 
         try:
             cliente = Cliente.objects.get(email=email)
             if cliente.check_password(senha):
+                request.session['cliente_id'] = cliente.id #Adicionei sessão
+                request.session['cliente_nome'] = cliente.nome
                 return redirect('telacli')  # Redireciona para a tela principal após login bem-sucedido
             else:
                 # Mensagem de erro caso a senha esteja incorreta
@@ -65,8 +78,19 @@ def logar(request):
             return redirect('flogin')  # Redireciona para a página de login
 
 
+def logout(request): #Fazer o logout do cliente
+    try:
+        del request.session['cliente_id']
+        del request.session['cliente_nome']
+    except KeyError:
+        pass
+    return redirect('flogin')
 
-def telacli(request):
+
+
+def telacli(request): #Verificar se o cliente é logao para
+    if 'cliente_id' not in request.session:
+        return redirect('flogin')
     return render(request, "telacliente.html")
 
 

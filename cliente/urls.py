@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import fcliente, fcadcliente, salvar_cliente, exibir_cliente, update_cliente, excluir_cliente, flogin, logar, telacli
+from .views import fcliente, fcadcliente, salvar_cliente, exibir_cliente, update_cliente, excluir_cliente, flogin, logar, telacli, logout
 
 
 urlpatterns = [
@@ -26,8 +26,12 @@ urlpatterns = [
     path('salvar_cliente/', salvar_cliente, name='salvar_cliente'),
     path('excluir_cliente/<int:id>', excluir_cliente, name='excluir_cliente'),
     path('exibir_cliente/<int:id>', exibir_cliente, name='exibir_cliente'),
+    path('exibir_cliente/', exibir_cliente, name='exibir_cliente'),
     path('flogin/', flogin, name='flogin'),
     path('logar/', logar, name='logar'),
     path('update_cliente/<int:id>', update_cliente, name='update_cliente'),
     path('telacli/', telacli, name='telacli'),
+    path('logout/', logout, name='logout'),
+
+
 ]

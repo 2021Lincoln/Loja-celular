@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Acessórios para Celulares</title>
+    <title>Loja de Celulares</title>
     <style>
         /* Resetando alguns estilos padrão */
         * {
@@ -14,7 +15,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f8f8f8;
             color: #333;
         }
 
@@ -26,8 +27,7 @@
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 2em;
         }
 
         .container {
@@ -111,100 +111,30 @@
 </head>
 <body>
     <header>
-        <h1>Loja de Acessórios para Celulares</h1>
-        <p>Encontre os acessórios perfeitos para o seu celular!</p>
+        <h1>Loja de Celulares</h1>
+        <p>Encontre os melhores celulares com os melhores preços!</p>
     </header>
 
     <div class="container">
-        <!-- Produto 1 -->
-        <div class="produto">
-            <img src="fone1.jpg" alt="Fone de Ouvido 1">
-            <h3>Fone de Ouvido Bluetooth</h3>
-            <p>Fone de ouvido sem fio, com excelente qualidade de som.</p>
-            <p class="preco">R$ 149,90</p>
-            <button class="botao">Comprar</button>
-        </div>
 
-        <!-- Produto 2 -->
-        <div class="produto">
-            <img src="carregador1.jpg" alt="Carregador Rápido">
-            <h3>Carregador Rápido</h3>
-            <p>Carregue seu celular rapidamente com esta tecnologia avançada.</p>
-            <p class="preco">R$ 79,90</p>
-            <button class="botao">Comprar</button>
-        </div>
+        <div class="container">
+    <div class="row">
+        {% for acessorio in acessorios %}
+            <div class="col-md-3">
+                {% if acessorio.imagem %}
+                    <img src="{{ acessorio.imagem.url }}" alt="{{ acessorio.nome }}" style="width: 100px; height: auto;">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">acessorio</h5>
+                    <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o conteúdo do card.</p>
+                </div>
+                <h3>{{ acessorio.nome }}</h3>
+                <p>{{ acessorio.descricao }}</p>
+                <p class="preco">R$ {{ acessorio.preco }}</p>
+                <button class="botao">Comprar</button>
 
-        <!-- Produto 3 -->
-        <div class="produto">
-            <img src="suporte1.jpg" alt="Suporte Veicular">
-            <h3>Suporte Veicular</h3>
-            <p>Suporte para celular no carro, com ajuste fácil e seguro.</p>
-            <p class="preco">R$ 59,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 4 -->
-        <div class="produto">
-            <img src="cabo1.jpg" alt="Cabo USB-C">
-            <h3>Cabo USB-C</h3>
-            <p>Carregue e transfira dados rapidamente com este cabo USB-C.</p>
-            <p class="preco">R$ 39,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 5 -->
-        <div class="produto">
-            <img src="carregador2.jpg" alt="Carregador Sem Fio">
-            <h3>Carregador Sem Fio</h3>
-            <p>Carregue seu celular sem a necessidade de cabos.</p>
-            <p class="preco">R$ 119,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 6 -->
-        <div class="produto">
-            <img src="powerbank1.jpg" alt="Power Bank">
-            <h3>Power Bank 10000mAh</h3>
-            <p>Carregue seu celular onde quer que esteja com este power bank.</p>
-            <p class="preco">R$ 149,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 7 -->
-        <div class="produto">
-            <img src="fone2.jpg" alt="Fone de Ouvido com Microfone">
-            <h3>Fone com Microfone</h3>
-            <p>Fone de ouvido com microfone embutido, ideal para chamadas.</p>
-            <p class="preco">R$ 89,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 8 -->
-        <div class="produto">
-            <img src="capinha1.jpg" alt="Capinha de Celular">
-            <h3>Capinha Personalizada</h3>
-            <p>Capinha de celular personalizada com seu design favorito.</p>
-            <p class="preco">R$ 49,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 9 -->
-        <div class="produto">
-            <img src="pelicula1.jpg" alt="Pelicula de Vidro">
-            <h3>Pelicula de Vidro Temperado</h3>
-            <p>Proteja a tela do seu celular com esta película de alta qualidade.</p>
-            <p class="preco">R$ 29,90</p>
-            <button class="botao">Comprar</button>
-        </div>
-
-        <!-- Produto 10 -->
-        <div class="produto">
-            <img src="carregador3.jpg" alt="Carregador Veicular">
-            <h3>Carregador Veicular</h3>
-            <p>Carregue seu celular enquanto dirige com este carregador veicular.</p>
-            <p class="preco">R$ 69,90</p>
-            <button class="botao">Comprar</button>
-        </div>
+            </div>
+        {% endfor %}
     </div>
-</body>
-</html>
+</div>
+
