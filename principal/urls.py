@@ -28,4 +28,5 @@ urlpatterns = [
     path('facessorios/', facessorios, name='facessorios'),
     path('findex/', findex, name='findex'), #Cria link de
 
+
 ]

@@ -130,8 +130,11 @@
                 <h3>{{ capinha.nome }}</h3>
                 <p>{{ capinha.descricao }}</p>
                 <p class="preco">R$ {{ capinha.preco }}</p>
-                <button class="botao">Comprar</button>
-
+                <form action="{% url 'addcarrinho' produto.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="quantidade" min="1" value="1" style="...">
+                    <button type="submit" class="btn btn-primary">Comprar</button>
+                </form>
             </div>
         {% endfor %}
     </div>

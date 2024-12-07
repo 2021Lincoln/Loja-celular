@@ -52,12 +52,25 @@
         </div>
       </li>
     </ul>
-    <img src="{% static 'img/icons8-carrinho-50.png' %}" alt="carrinho" class="cart-icon">
+      <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'exibir_carrinho' %}"><img src="{% static 'img/icons8-carrinho-50.png' %}" alt="carrinho" class="cart-icon"></a>
+              </li>
+
 <form class="form-inline my-2 my-lg-0" action="{% url 'flogin' %}">
     <button class="btn btn-outline-success my-2 my-sm-0">Login</button>
 </form>
   </div>
 </nav>
+    <!-- Bloco para exibir mensagens -->
+    {% if messages %}
+        <div class="alert alert-danger" role="alert" id="messageModal" data-dismiss="modal">
+            {% for message in messages %}
+                {{ message }}<br>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <h1 class="text-center">Loja de Celular</h1>
 
 
@@ -191,6 +204,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        // Verifica se a mensagem existe
+        if ($('#messageModal').length) {
+            // Exibe a mensagem por 3 segundos e depois a oculta
+            setTimeout(function() {
+                $('#messageModal').fadeOut('slow');
+            }, 3000); // Tempo em milissegundos (3000ms = 3 segundos)
+        }
+    });
+</script>
 
 </body>
 </html>

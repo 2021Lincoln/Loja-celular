@@ -83,3 +83,5 @@ def lista_acessorios(request):
     return render(request, "acessorios.html", {"acessorios": acessorios})
 
 
+
+
