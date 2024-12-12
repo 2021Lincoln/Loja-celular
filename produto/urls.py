@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import fproduto, fcadproduto, salvar, exibir, update, excluir, lista_capinha, lista_celular, lista_acessorios
+from .views import fproduto, fcadproduto, salvar, exibir, update, excluir, lista_capinha, lista_celular, lista_acessorios, flista_produtos
 
 
 urlpatterns = [
@@ -30,6 +30,6 @@ urlpatterns = [
     path('lista_celular/', lista_celular, name='lista_celular'),
     path('lista_capinha/', lista_capinha, name='lista_capinha'),
     path('lista_acessorios/', lista_acessorios, name='lista_acessorios'),
-
+    path('flista_produtos/', flista_produtos, name='flista_produtos'),
 
 ]

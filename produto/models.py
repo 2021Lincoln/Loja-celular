@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 class Produto(models.Model):
 
-    marca = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100)
 
     descricao = models.CharField(max_length=100)
 
@@ -21,5 +21,5 @@ class Produto(models.Model):
 
 
     def __str__(self):
-        return f"{self.marca} - {self.descricao} - {self.preco:.2f} - {self.quantidade} - {self.categoria} "
+        return f"{self.nome} - {self.descricao} - {self.preco:.2f} - {self.quantidade} - {self.categoria} "
 

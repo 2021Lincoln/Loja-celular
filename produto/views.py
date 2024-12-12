@@ -83,5 +83,13 @@ def lista_acessorios(request):
     return render(request, "acessorios.html", {"acessorios": acessorios})
 
 
+def flista_produtos(request):
+    categoria = request.GET.get('categoria')
+    if categoria:
+        produtos = Produto.objects.filter(categoria=categoria)
+    else:
+        produtos = Produto.objects.all()
+
+    return render(request, "lista_produtos.html", {"produtos": produtos})
 
 

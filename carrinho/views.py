@@ -1,9 +1,13 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, redirect
 from .models import ItemCarrinho
-from cliente.models import Cliente
 from produto.models import Produto
+from cliente.models import Cliente
 from django.contrib import messages
-# Create your views here.
+
+
 def addcarrinho(request, produto_id):
     if request.method == 'POST':
         try:
@@ -20,7 +24,7 @@ def addcarrinho(request, produto_id):
         except Produto.DoesNotExist:
             messages.error(request, 'Produto não encontrado.')
 
-        return redirect('index')
+        return redirect('findex')
 
 
 def exibir_carrinho(request):
