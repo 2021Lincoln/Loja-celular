@@ -1,10 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Meta tags obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <title>Carrinho de Compras</title>
+
+    <style>
+        /* Estilos para a navbar */
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .cart-icon {
+            width: 25px;
+            height: 25px;
+            margin-right: 5px;
+        }
+
+        /* Estilo para o botão de sair */
+        .btn-sair {
+            border-radius: 20px;
+            padding: 8px 15px;
+        }
+
+        /* Ajustes para a dropdown */
+        .dropdown-menu {
+            min-width: 180px;
+        }
+
+        /* Adicionando o espaçamento para os itens */
+        .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+
+        /* Garantir que o carrinho e o logout fiquem alinhados */
+        .ml-auto .nav-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
+
+<!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <!-- Menu de Produtos -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'telacli' %}">Home <span class="sr-only">(página atual)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Produtos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a href="{% url 'flista_produtos' %}?categoria=celular" class="dropdown-item">Celular</a>
+          <a href="{% url 'flista_produtos' %}?categoria=capa" class="dropdown-item">Capa</a>
+          <div class="dropdown-divider"></div>
+          <a href="{% url 'flista_produtos' %}?categoria=acessorios" class="dropdown-item">Acessórios</a>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Itens no lado direito da navbar -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'exibir_carrinho' %}">
+          <img src="{% static 'img/icons8-carrinho-50.png' %}" alt="carrinho" class="cart-icon"> Carrinho
+        </a>
+      </li>
+
+      <!-- Botão de Sair -->
+      <li class="nav-item">
+        <a class="nav-link btn btn-danger text-white" href="{% url 'logout' %}">Sair</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Conteúdo principal -->
+<div class="container">
+    <h2>Carrinho de Compras</h2>
+
+    <!-- Tabela de itens no carrinho -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.produto.nome }}</td>
+                <td>{{ item.quantidade }}</td>
+                <td>R$ {{ item.total_preco }}</td>
+                <!-- Formulário de exclusão de item -->
+                <td>
+                    <form method="POST" action="{% url 'excluir' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Total -->
+    <h4>Total: R$ {{ total }}</h4>
+
+    <!-- Botão de Finalizar Compra -->
+    <div class="text-center">
+        <a class="btn btn-success">Finalizar Compra</a>
+    </div>
+</div>
+
+<!-- JavaScript (Opcional) -->
+<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>

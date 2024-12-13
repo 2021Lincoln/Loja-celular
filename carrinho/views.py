@@ -24,7 +24,7 @@ def addcarrinho(request, produto_id):
         except Produto.DoesNotExist:
             messages.error(request, 'Produto não encontrado.')
 
-        return redirect('findex')
+        return redirect('exibir_carrinho')
 
 
 def exibir_carrinho(request):
@@ -36,3 +36,14 @@ def exibir_carrinho(request):
     else:
         messages.error(request, 'Você precisa estar logado para ver o carrinho.')
         return render(request, "login.html")
+
+
+def excluir(request, id):
+    # Buscar o item do carrinho pelo ID fornecido
+    item_carrinho = Produto.objects.get(ItemCarrinho, id=id)
+
+    # Excluir o item do carrinho
+    item_carrinho.delete()
+
+    # Redirecionar de volta para a página do carrinho
+    return redirect('exibir_carrinho')

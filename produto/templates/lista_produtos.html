@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+{% load static %}
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -11,45 +12,61 @@
     <title>Controle de Produtos</title>
   </head>
   <body>
-    <div class="container">
+
+
+<!-- Barra de Navegação -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <!-- Menu de Produtos -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'telacli' %}">Home <span class="sr-only">(página atual)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Produtos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a href="{% url 'flista_produtos' %}?categoria=celular" class="dropdown-item">Celular</a>
+          <a href="{% url 'flista_produtos' %}?categoria=capa" class="dropdown-item">Capa</a>
+          <div class="dropdown-divider"></div>
+          <a href="{% url 'flista_produtos' %}?categoria=acessorios" class="dropdown-item">Acessórios</a>
+        </div>
+      </li>
+    </ul>
+
+      <ul class="navbar-nav ml-auto">
+      {% if request.session.cliente_nome %}
+        <li class="nav-item">
+          <span class="navbar-text">Bem-vindo, {{ request.session.cliente_nome }}!</span>
+        </li>
+          <li class="nav-item">
+        <a class="nav-link" href="{% url 'exibir_carrinho' %}">
+          <img src="{% static 'img/icons8-carrinho-50.png' %}" alt="carrinho" class="cart-icon"> Carrinho
+        </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" href="{% url 'logout' %}">Sair</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary text-white" href="{% url 'flogin' %}">Entrar</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <H2>Celulares</H2>
             </div>
         </div>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(Página atual)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'fhistoria' %}">Nossa Historia</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Produtos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="">Celulares</a>
-          <a class="dropdown-item" href="#">Capas</a>
-          <a class="dropdown-item" href="#">Acessórios</a>
-        </div>
-      </li>
-    </ul>
-     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'flogin' %}" id="loginLink">Entrar <span>&rarr;</span></a>
-      </li>
-    </ul>
-  </div>
-</nav>
 
           <!-- Bloco para exibir mensagens -->
     {% if messages %}
@@ -81,6 +98,7 @@
             </div>
 
             </div>
+        <!-- Itens à direita da navbar (Sessão do usuário) -->
 
     </div>
     </div>

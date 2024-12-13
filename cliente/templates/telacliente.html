@@ -12,55 +12,96 @@
 
       <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
     <title>Celular Amigo</title>
+
+    <style>
+        /* Estilo geral para a navbar */
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        /* Estilo para a navbar brand */
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Botões de login e logout */
+        .btn-entrar {
+            margin-right: 10px;
+        }
+
+        /* Espaçamento no lado direito da navbar */
+        .navbar-nav.ml-auto .nav-item {
+            margin-left: 15px;
+        }
+
+        /* Estilo para o texto de boas-vindas */
+        .navbar-text {
+            font-weight: bold;
+        }
+
+        /* Estilo para o menu suspenso */
+        .dropdown-menu {
+            min-width: 200px;
+        }
+    </style>
+
   </head>
   <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <!-- Barra de navegação -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Título da Navbar -->
+  <a class="navbar-brand" href="#">Home <span class="sr-only">(página atual)</span></a>
+
+  <!-- Botão para dispositivos móveis -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
 
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <!-- Itens à esquerda da navbar -->
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'exibir_cliente' %}">Dados Pessoais</a>
-      </li>
-      <!-- TRABALHAR A SESSÃO DO USUÁRIO -->
-       <ul class="navbar-nav ml-auto">
-        {% if request.session.cliente_nome %}
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Sair</a>
-          </li>
-           <li class="nav-item">
-            <span class="navbar-text">Bem-vindo, {{ request.session.cliente_nome }}!</span>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'flogin' %}">Entrar</a>
-          </li>
-        {% endif %}
-      </ul>
-        <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
-      </li>
-      <li class="nav-item">
-        <a href="{% url 'fhistoria' %}" class="nav-link" >Nossa Historia</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Produtos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a href="{% url 'flista_produtos' %}?categoria=celular" class="dropdown-item" >Celular</a>
+          <a href="{% url 'flista_produtos' %}?categoria=celular" class="dropdown-item">Celular</a>
           <a href="{% url 'flista_produtos' %}?categoria=capa" class="dropdown-item">Capa</a>
           <div class="dropdown-divider"></div>
-          <a href="{% url 'flista_produtos' %}?categoria=acessorios" class="dropdown-item" >Acessórios</a>
+          <a href="{% url 'flista_produtos' %}?categoria=acessorios" class="dropdown-item">Acessórios</a>
         </div>
       </li>
     </ul>
+
+    <!-- Itens à direita da navbar (Sessão do usuário) -->
+    <ul class="navbar-nav ml-auto">
+      {% if request.session.cliente_nome %}
+        <li class="nav-item">
+          <span class="navbar-text">Bem-vindo, {{ request.session.cliente_nome }}!</span>
+        </li>
+        </li>
+          <li class="nav-item">
+        <a class="nav-link" href="{% url 'exibir_carrinho' %}">
+          <img src="{% static 'img/icons8-carrinho-50.png' %}" alt="carrinho" class="cart-icon"> Carrinho
+        </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" href="{% url 'logout' %}">Sair</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary text-white" href="{% url 'flogin' %}">Entrar</a>
+        </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
