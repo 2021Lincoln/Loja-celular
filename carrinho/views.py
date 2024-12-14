@@ -40,10 +40,11 @@ def exibir_carrinho(request):
 
 def excluir(request, id):
     # Buscar o item do carrinho pelo ID fornecido
-    item_carrinho = Produto.objects.get(ItemCarrinho, id=id)
-
+    item_carrinho = ItemCarrinho.objects.get(id=id)
     # Excluir o item do carrinho
     item_carrinho.delete()
-
     # Redirecionar de volta para a página do carrinho
     return redirect('exibir_carrinho')
+
+
+

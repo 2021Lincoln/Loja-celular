@@ -114,6 +114,7 @@
                 <td>{{ item.produto.nome }}</td>
                 <td>{{ item.quantidade }}</td>
                 <td>R$ {{ item.total_preco }}</td>
+
                 <!-- Formulário de exclusão de item -->
                 <td>
                     <form method="POST" action="{% url 'excluir' item.id %}">
